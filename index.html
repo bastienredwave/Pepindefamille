@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="fr">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-52TWDY62SM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-52TWDY62SM');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pépin d'Famille — Bientôt</title>
@@ -72,7 +80,7 @@
   <div class="avatar"><img src="assets/logo.png" alt="Pépin d'Famille"></div>
   <div class="headline">Le site arrive bientôt</div>
   <div class="sub">En attendant, retrouvez nos vidéos et nos réseaux ici</div>
-  <a class="btn" href="/linktree/">Voir nos réseaux</a>
+  <a class="btn" href="/linktree/" onclick="gtag('event','click_link',{link_name:'voir_reseaux'})">Voir nos réseaux</a>
 </div>
 </body>
 </html>
