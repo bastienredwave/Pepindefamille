@@ -124,6 +124,23 @@
     background: #16130f;
     box-shadow: 0 0 0 1.5px rgba(212,175,55,0.45), 0 12px 40px rgba(0,0,0,0.55);
   }
+  .video-lien { display: block; text-decoration: none; }
+  .video-lien:focus-visible { outline: 2px solid #D4AF37; outline-offset: 4px; border-radius: 22px; }
+  .video-cta {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #f3efe6;
+    background: rgba(10,9,8,0.72);
+    border: 1.5px solid rgba(212,175,55,0.6);
+  }
   .video-son {
     position: absolute;
     right: 12px;
@@ -165,12 +182,15 @@
 
 
   <figure class="video">
+    <a class="video-lien" href="https://pepindefamille.com" target="_blank" rel="noopener" aria-label="Découvrir le site Pépin d'Famille" onclick="gtag('event','click_link',{link_name:'video_site'})">
     <video id="video" poster="assets/pepindefamille-short-poster.webp" width="720" height="1280"
            autoplay muted loop playsinline preload="metadata"
            aria-label="Présentation animée de Pépin d'Famille : comparatifs de blenders, d'extracteurs de jus et sélection bien-être">
       <source src="assets/pepindefamille-short-web.mp4" type="video/mp4">
       <source src="assets/pepindefamille-short-web.webm" type="video/webm">
     </video>
+      <span class="video-cta">Découvrir le site →</span>
+    </a>
     <button type="button" class="video-son" id="videoSon" aria-pressed="false">Activer le son</button>
   </figure>
 
