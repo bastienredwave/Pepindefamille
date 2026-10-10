@@ -109,6 +109,38 @@
     align-items: center;
     justify-content: center;
   }
+  .video {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    margin: 34px 0 0;
+  }
+  .video video {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 9 / 16;
+    border-radius: 22px;
+    background: #16130f;
+    box-shadow: 0 0 0 1.5px rgba(212,175,55,0.45), 0 12px 40px rgba(0,0,0,0.55);
+  }
+  .video-son {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    border: 0;
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #0a0908;
+    background: #D4AF37;
+    cursor: pointer;
+  }
+  .video-son:focus-visible { outline: 2px solid #f3efe6; outline-offset: 2px; }
 </style>
 </head>
 <body>
@@ -121,6 +153,7 @@
   <div class="tagline">Les fruits ont aussi leur histoire</div>
   <div class="subtagline">Mini-séries dramatiques IA · nouvel épisode chaque semaine</div>
 
+
   <div class="links">
     <a class="btn btn-primary" href="https://pepindefamille.com" target="_blank" rel="noopener" onclick="gtag('event','click_link',{link_name:'notre_site'})">Notre site</a>
     <a class="btn btn-primary" href="mailto:pepindefamille@outlook.com" onclick="gtag('event','click_link',{link_name:'contact_pro'})">Contact Pro</a>
@@ -129,6 +162,17 @@
     <a class="btn btn-secondary" href="https://www.facebook.com/share/1ETe1Vqwyu/?mibextid=wwXIfr" target="_blank" rel="noopener" onclick="gtag('event','click_link',{link_name:'facebook_bouton'})">Facebook</a>
     <a class="btn btn-secondary" href="https://www.youtube.com/@Pepindefamille" target="_blank" rel="noopener" onclick="gtag('event','click_link',{link_name:'youtube_bouton'})">YouTube</a>
   </div>
+
+
+  <figure class="video">
+    <video id="video" poster="assets/pepindefamille-short-poster.webp" width="720" height="1280"
+           autoplay muted loop playsinline preload="metadata"
+           aria-label="Présentation animée de Pépin d'Famille : comparatifs de blenders, d'extracteurs de jus et sélection bien-être">
+      <source src="assets/pepindefamille-short-web.mp4" type="video/mp4">
+      <source src="assets/pepindefamille-short-web.webm" type="video/webm">
+    </video>
+    <button type="button" class="video-son" id="videoSon" aria-pressed="false">Activer le son</button>
+  </figure>
 
   <div class="social">
    <a href="https://www.tiktok.com/@ppin.dfamille?is_from_webapp=1&sender_device=pc" aria-label="TikTok" target="_blank" rel="noopener" onclick="gtag('event','click_link',{link_name:'tiktok_icone'})">
@@ -146,5 +190,20 @@
   </div>
 
 </div>
+<script>
+  (function () {
+    var v = document.getElementById('video'), b = document.getElementById('videoSon');
+    if (!v || !b) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      v.removeAttribute('autoplay'); v.pause(); v.setAttribute('controls', '');
+    }
+    b.addEventListener('click', function () {
+      v.muted = !v.muted;
+      if (!v.muted) { v.currentTime = 0; v.play(); gtag('event', 'click_link', { link_name: 'video_son' }); }
+      b.textContent = v.muted ? 'Activer le son' : 'Couper le son';
+      b.setAttribute('aria-pressed', String(!v.muted));
+    });
+  })();
+</script>
 </body>
 </html>
